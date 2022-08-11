@@ -1,0 +1,14 @@
+[package]
+name = "wasmc"
+version = "0.1.0"
+authors = ["McKayla Washburn <mckayla@hey.com>"]
+description = "Compile .wat files into .wasm binaries"
+keywords = []
+license = "MIT"
+homepage = "https://github.com/aslilac/wasmc"
+repository = "https://github.com/aslilac/wasmc"
+documentation = "https://docs.rs/crate/wasmc"
+edition = "2021"
+
+[dependencies]
+wat = "1.0.47"
