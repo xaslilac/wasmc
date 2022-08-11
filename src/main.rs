@@ -1,6 +1,8 @@
 use ::std::env;
+use ::std::fs;
 use ::std::io;
 use ::std::path::PathBuf;
+use ::std::process::exit;
 
 #[derive(Clone, Debug, Default)]
 struct OptionsBuilder {
@@ -45,7 +47,7 @@ fn main() -> io::Result<()> {
                 }
                 _ => {
                     println!("Unrecognized option: {}", arg);
-                    std::process::exit(1);
+                    exit(1);
                 }
             }
         } else {
@@ -57,7 +59,7 @@ fn main() -> io::Result<()> {
     println!("Hello, computer! {:?}", options);
 
     let bytes = ::wat::parse_file(options.input).unwrap();
-    std::fs::write(options.output, bytes)?;
+    fs::write(options.output, bytes)?;
 
     Ok(())
 }
