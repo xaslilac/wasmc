@@ -1,11 +1,10 @@
 use std::path::Path;
-use std::path::PathBuf;
 use std::process::Command;
 
+mod macros;
 mod setup;
 mod util;
 use util::needs_dir;
-use util::DeleteAfter;
 
 const EXE: &str = "./build/release/wasmc";
 
@@ -16,7 +15,7 @@ fn declared_input_inferred_output() {
 	// This file must not exist before testing
 	assert!(!Path::new("./tests/testdata/add.wasm").exists());
 	// ...and we must make sure to delete it after testing
-	let _d = DeleteAfter(PathBuf::from("./tests/testdata/add.wasm"));
+	delete_after!("./tests/testdata/add.wasm");
 
 	let result = Command::new(EXE)
 		.arg("./tests/testdata/add.wat")
@@ -38,7 +37,7 @@ fn declared_input_declared_output() {
 	// This file must not exist before testing
 	assert!(!Path::new("./tests/testdata/build/add.wasm").exists());
 	// ...and we must make sure to delete it after testing
-	let _d = DeleteAfter(PathBuf::from("./tests/testdata/build/add.wasm"));
+	delete_after!("./tests/testdata/build/add.wasm");
 
 	needs_dir("./tests/testdata/build/");
 
