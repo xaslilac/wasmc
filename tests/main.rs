@@ -4,6 +4,7 @@ use std::process::Command;
 
 mod setup;
 mod util;
+use util::needs_dir;
 use util::DeleteAfter;
 
 const EXE: &str = "./build/release/wasmc";
@@ -38,6 +39,8 @@ fn declared_input_declared_output() {
 	assert!(!Path::new("./tests/testdata/build/add.wasm").exists());
 	// ...and we must make sure to delete it after testing
 	let _d = DeleteAfter(PathBuf::from("./tests/testdata/build/add.wasm"));
+
+	needs_dir("./tests/testdata/build/");
 
 	let result = Command::new(EXE)
 		.arg("./tests/testdata/add.wat")
