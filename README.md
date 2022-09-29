@@ -1,4 +1,4 @@
-# wasm
+# wasmc
 
 ```sh
 # Compile ./module.wat into ./module.wasm
