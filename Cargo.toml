@@ -1,6 +1,6 @@
 [package]
 name = "wasmc"
-version = "0.1.0"
+version = "1.0.0"
 authors = ["McKayla Washburn <mckayla@hey.com>"]
 description = "Compile .wat files into .wasm binaries"
 keywords = []
