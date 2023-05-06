@@ -19,7 +19,7 @@ jobs:
             https://mckayla.cloud/tomlq-linux-x64.tar.gz
 
       - run: |
-          if [ "v$(tomlq version -f Cargo.toml)" == "${{ github.ref_name }}" ]; then
+          if [ "v$(tomlq package.version -f Cargo.toml)" == "${{ github.ref_name }}" ]; then
             exit 0
           fi
 
